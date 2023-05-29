@@ -75,4 +75,24 @@ public class OneWayList<E> {
         } else add(value);
     }
 
+
+    public void oneWayListrevert() {
+        if (head != null && head.nextNode != null) {
+            Node tmp = head;
+            oneWayListrevert(head.nextNode, head);
+            tmp.nextNode = null;
+        }
+    }
+
+    private void oneWayListrevert(Node currentNode, Node prviousNode) {
+        if (currentNode.nextNode == null){
+            head = currentNode;
+        } else {
+            oneWayListrevert(currentNode.nextNode, currentNode);
+        }
+        currentNode.nextNode = prviousNode;
+    }
+
+
+
 }

@@ -89,7 +89,10 @@ public class TwoWayList<E> {
         size++;
     }
 
-    public void revert() {
+    /** Функция разворот двухсвязного списка
+     * 
+     */
+    public void linkedListRevert() {
         Node<E> currentNode = head;
         while (currentNode != null) {
             Node <E> next = currentNode.nextNode;
