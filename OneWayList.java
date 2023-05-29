@@ -27,7 +27,8 @@ public class OneWayList<E> {
         int counter = 0;
         while (counter < index) {
             counter++;
-            if (currentNode.nextNode == null) throw new ArrayIndexOutOfBoundsException();
+            if (currentNode.nextNode == null)
+                throw new ArrayIndexOutOfBoundsException();
             currentNode = currentNode.nextNode;
         }
         return currentNode.value;
@@ -59,7 +60,8 @@ public class OneWayList<E> {
 
     // add by index
     public void add(E value, int index) {
-        if (index > size() || index < 0) throw new ArrayIndexOutOfBoundsException();
+        if (index > size() || index < 0)
+            throw new ArrayIndexOutOfBoundsException();
         if (index != 0) {
             Node<E> currentNode = head;
             while (index > 1) {
@@ -72,9 +74,9 @@ public class OneWayList<E> {
             currentNode.nextNode = newNode;
             Node<E> tmp = currentNode.nextNode;
             newNode.nextNode = tmp;
-        } else add(value);
+        } else
+            add(value);
     }
-
 
     public void oneWayListrevert() {
         if (head != null && head.nextNode != null) {
@@ -85,14 +87,12 @@ public class OneWayList<E> {
     }
 
     private void oneWayListrevert(Node currentNode, Node prviousNode) {
-        if (currentNode.nextNode == null){
+        if (currentNode.nextNode == null) {
             head = currentNode;
         } else {
             oneWayListrevert(currentNode.nextNode, currentNode);
         }
         currentNode.nextNode = prviousNode;
     }
-
-
 
 }
