@@ -1,4 +1,4 @@
-package il;
+// package il;
 
 public class TwoWayList<E> {
     private Node<E> head;
@@ -20,7 +20,7 @@ public class TwoWayList<E> {
     }
 
     public int size() {
-           return size;
+        return size;
     }
 
     public E get(int index) {
@@ -28,7 +28,8 @@ public class TwoWayList<E> {
         int counter = 0;
         while (counter < index) {
             counter++;
-            if (currentNode.nextNode == null) throw new ArrayIndexOutOfBoundsException();
+            if (currentNode.nextNode == null)
+                throw new ArrayIndexOutOfBoundsException();
             currentNode = currentNode.nextNode;
         }
         return currentNode.value;
@@ -60,7 +61,8 @@ public class TwoWayList<E> {
 
     // add by index
     public void add(E value, int index) {
-        if (index > size() || index < 0) throw new ArrayIndexOutOfBoundsException();
+        if (index > size() || index < 0)
+            throw new ArrayIndexOutOfBoundsException();
         if (index != 0) {
             Node<E> currentNode = head;
             while (index > 1) {
@@ -74,16 +76,35 @@ public class TwoWayList<E> {
             Node<E> tmp = currentNode.nextNode;
             newNode.nextNode = tmp;
             size++;
-        } else add(value);
+        } else
+            add(value);
     }
 
-    public void addLast(E value){
+    public void addLast(E value) {
         Node<E> newNode = new Node<>();
         newNode.value = value;
         newNode.previousNode = tail;
         tail.nextNode = newNode;
         tail = newNode;
         size++;
+    }
+
+    public void revert() {
+        Node<E> currentNode = head;
+        while (currentNode != null) {
+            Node <E> next = currentNode.nextNode;
+            Node <E> previous = currentNode.previousNode;
+            currentNode.nextNode = previous;
+            currentNode.previousNode = next;
+            if (previous == null){
+                tail = currentNode;
+            }
+            if (next == null){
+                head = currentNode;
+            }
+            currentNode = next;
+        }
+
     }
 
 }

@@ -1,4 +1,4 @@
-package il;
+// package il;
 
 public class OneWayList<E> {
     private Node<E> head;
